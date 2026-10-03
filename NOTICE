@@ -1,0 +1,13 @@
+SpecQR Kotlin
+Copyright (c) 2026 SpecQR
+
+From-scratch Kotlin/JVM QR Code Model 2 implementation based on the
+user-owned SpecQR algorithm and API contracts. Runtime source is Kotlin;
+it does not wrap or depend on SpecQR Java or third-party QR libraries.
+
+QR structure, encoding and Reed-Solomon tables implement published QR
+Code Model 2 parameters. The fixed Kanji mapping follows the WHATWG
+Encoding Standard Shift_JIS index first-mapping behavior.
+
+Kotlin standard library and a JDK are language/platform dependencies.
+Test-only independent QR encoders and decoders are not shipped in the JAR.

@@ -1,0 +1,341 @@
+{
+  "edition": "SpecQR Kotlin",
+  "version": "0.1.0-rc.1",
+  "verificationDateUtc": "2026-10-03",
+  "status": "local-verification-passed",
+  "runtime": "Kotlin/JVM",
+  "languageApi": "2.2",
+  "jvmTarget": 17,
+  "runtimeSourceFingerprint": "f683ce293d3b6733cca9108e3dece4c3fb3117c7bd9a2169c2bdfefd6d6b1782",
+  "runtimeSourceFingerprintAlgorithm": "SHA-256 of sorted relative path + NUL + contents + NUL, src/main/kotlin/*.kt recursively",
+  "runtimeFilesSha256": {
+    "src/main/kotlin/io/specqr/Capacity.kt": "679bcaee1f59bc59766c5a68de7151c2e83e0e60c8be0bd82384e2135cb9a6cc",
+    "src/main/kotlin/io/specqr/Core.kt": "cf9225886f7ace12d99bbb573b659a2002348203f7f19790ba74ead19115fb7a",
+    "src/main/kotlin/io/specqr/Gs1.kt": "7c03d0f1a0e7514283206435583800b6556a0da569cd65651bbaaf150deb175f",
+    "src/main/kotlin/io/specqr/Json.kt": "24dfaaeab0b58efef1acaeefbbe7a38667863a55c3add7747857ef1880b5ff95",
+    "src/main/kotlin/io/specqr/Kanji.kt": "9eb034f2b8b28fdfa030e94fa2f88f653907bbae1b76486883efc5104988d4bb",
+    "src/main/kotlin/io/specqr/Main.kt": "925c427591b38c24c12d59d440be6783c3e7a98fc730efac2bffef6db7bf533f",
+    "src/main/kotlin/io/specqr/Options.kt": "1ea450abd8e318d608cb934b38d758ca678e73c05f3fdfcfe442458d37d2ccfb",
+    "src/main/kotlin/io/specqr/Plan.kt": "54884a9af4518a77b2c85623a6ced0f72f0f5089d943a369d35fe946f4868804",
+    "src/main/kotlin/io/specqr/QrCode.kt": "2420980fc1dc6044afb4fd9521717b2f7f7ebe65cedda148c897513f63c276f2",
+    "src/main/kotlin/io/specqr/Render.kt": "b944e062bd292b51dbf2b415aecf391e165e2a3609b79872d997acda24b9f30b",
+    "src/main/kotlin/io/specqr/Segment.kt": "25cb6f31ef93c5f0abecf9d04111c1e58b08f43ffeece36f3cf6799695dfc040",
+    "src/main/kotlin/io/specqr/Segments.kt": "91457823d1f2f3c5bbc4b88236dbc72cdee1968484039ebacb894c23dd36288d",
+    "src/main/kotlin/io/specqr/SpecQr.kt": "88822257f66d0f75afe4445e4cf8c8188f90e1c1e2e1b3bf3a54f9fa1fb214b8",
+    "src/main/kotlin/io/specqr/SpecQrException.kt": "e8311e6e498ff342a7b1a5e3db9f76664003aaa25d87746d60030c16701b0708",
+    "src/main/kotlin/io/specqr/StructuredAppend.kt": "632147f4cfd9648af0a636c6a0973513e57e73159ad5984916bf87055a1c68dd",
+    "src/main/kotlin/io/specqr/Tables.kt": "d560afe9e7b0555f063f8f2931f5793a0534fefc24ff9dcd82552e925616634e"
+  },
+  "canonicalBuild": {
+    "compiler": "2.4.20",
+    "jdk": "Temurin 17.0.20.1+1",
+    "runtimeJarSha256": "363e376f2fba0d00d079338382cfa0abc3237dd7dd35e9c94e0d8a6fcab31cb8",
+    "sourcesJarSha256": "e6002384e3888a6e3832454289d967c0606ede94dcaadbb94ffd0f04d25ca5f8",
+    "stdlibSha256": "2226de463d309d4a5500a481320b3dea515a6981dcae1def531fbc158884e25f",
+    "reproducible": true,
+    "detachedKotlinConsumer": true,
+    "detachedJavaConsumer": true,
+    "detachedCli": true,
+    "javaBaseOnly": true
+  },
+  "localCompilerBuilds": [
+    {
+      "kotlin": "2.2.21",
+      "jdk": 17,
+      "fullJavaSuiteAssertions": 263805,
+      "nativeKotlinAssertions": 1607,
+      "status": "passed",
+      "nativeTestsRecompiledAfterTransportCheckFix": true
+    },
+    {
+      "kotlin": "2.2.21",
+      "jdk": 25,
+      "fullJavaSuiteAssertions": 263805,
+      "nativeKotlinAssertions": 1607,
+      "status": "passed",
+      "nativeTestsRecompiledAfterTransportCheckFix": true
+    },
+    {
+      "kotlin": "2.3.21",
+      "jdk": 17,
+      "fullJavaSuiteAssertions": 263805,
+      "nativeKotlinAssertions": 1607,
+      "status": "passed",
+      "nativeTestsRecompiledAfterTransportCheckFix": true
+    },
+    {
+      "kotlin": "2.3.21",
+      "jdk": 25,
+      "fullJavaSuiteAssertions": 263805,
+      "nativeKotlinAssertions": 1607,
+      "status": "passed",
+      "nativeTestsRecompiledAfterTransportCheckFix": true
+    },
+    {
+      "kotlin": "2.4.20",
+      "jdk": 17,
+      "fullJavaSuiteAssertions": 263805,
+      "nativeKotlinAssertions": 1607,
+      "status": "passed",
+      "nativeTestsRecompiledAfterTransportCheckFix": true
+    },
+    {
+      "kotlin": "2.4.20",
+      "jdk": 25,
+      "fullJavaSuiteAssertions": 263805,
+      "nativeKotlinAssertions": 1607,
+      "status": "passed",
+      "nativeTestsRecompiledAfterTransportCheckFix": true
+    }
+  ],
+  "unitAssertions": {
+    "javaInterop": 263805,
+    "kotlinNative": 1607,
+    "failed": 0,
+    "skipped": 0
+  },
+  "additionalIndependentReview": {
+    "status": "clear",
+    "renderGs1ApiAssertionsPerCombination": 432,
+    "structuredAppendAssertionsPerCombination": 194,
+    "jdk": [
+      17,
+      25
+    ],
+    "stdlib": [
+      "2.2.21",
+      "2.3.21",
+      "2.4.20"
+    ],
+    "executionCombinations": 6,
+    "resourceProbesHeapMiB": 64,
+    "resourceProbes": 4
+  },
+  "minimumStdlibRuntimeCheck": {
+    "stdlib": "2.2.21",
+    "jdk": "21.0.12.1",
+    "javaInteropAssertions": 263805,
+    "kotlinAssertions": 1607,
+    "javaBaseOnly": true,
+    "candidateTransport": "canonical thin JAR at original staged path"
+  },
+  "baselineJs": {
+    "repository": "SpecQR/SpecQR",
+    "commit": "15ad15e5c770ea0e39072f8f88b2733018f02ffd",
+    "version": "3.0.0-rc.2"
+  },
+  "contractReferenceJava": {
+    "repository": "SpecQR/SpecQR-Java",
+    "commit": "1f2bf277a582f0eb4e31c9975443c1a76552aa23",
+    "runtimeDependency": false
+  },
+  "sourceVerification": {
+    "conformance": {
+      "status": "passed",
+      "counts": {
+        "publicMatrices": 3028,
+        "nayukiMatrices": 2400,
+        "rawMatrices": 4320,
+        "capacityCases": 640,
+        "boundaryEstimates": 1920,
+        "gfProducts": 65536,
+        "reedSolomonDegrees": 255,
+        "malformedInputs": 18,
+        "structuredAppendSets": 22,
+        "structuredAppendMatrices": 112,
+        "concurrentMatrices": 256
+      },
+      "reportSha256": "fee4721154629b5b0019f59ce9ca1bcc8d266dbade52040a6157c8137886be24"
+    },
+    "jsqr": {
+      "status": "passed",
+      "counts": {
+        "matrixDecodes": 232,
+        "pngDecodes": 232,
+        "eciHeaders": 64,
+        "verifiedRgbaPixels": 13855872
+      },
+      "reportSha256": "bbfc0a874e98b6ad2a9e0dee88ab01a3d924214aaccc50d28896c868a0aa6c30"
+    },
+    "zxing-cpp": {
+      "status": "passed",
+      "counts": {
+        "matrixDecodes": 706,
+        "pngDecodes": 750,
+        "verifiedRgbaPixels": 97805184,
+        "structuredAppendHeaders": 135,
+        "fnc1SecondSymbols": 304,
+        "damagedSymbolsCorrected": 0,
+        "eciTextModeChecks": 70,
+        "highLevelSets": 5,
+        "highLevelSymbols": 44,
+        "independentReconstructions": 5
+      },
+      "reportSha256": "e4b48f16e511e6d50d9c6bcf71ab8769f7af1d5a29c3faeb827139231d5d0a75"
+    },
+    "zxing-java": {
+      "status": "passed",
+      "counts": {
+        "matrixDecodes": 446,
+        "pngDecodes": 446,
+        "verifiedRgbaPixels": 10008270,
+        "structuredAppendHeaders": 135,
+        "fnc1SecondSymbols": 0,
+        "damagedSymbolsCorrected": 32,
+        "eciTextModeChecks": 0,
+        "highLevelSets": 5,
+        "highLevelSymbols": 44,
+        "independentReconstructions": 10
+      },
+      "reportSha256": "f37737a832417222a33a6ceb77f1f2f9a98e81f5f14675d7a730b0975bcdc619"
+    },
+    "gs1": {
+      "status": "passed",
+      "operations": 15690,
+      "matched": 15626,
+      "unexpectedDifferences": 0,
+      "idnaDifferences": 24,
+      "dotPolicyDifferences": 40,
+      "structuredDiagnosticDifferences": 0,
+      "corpusSha256": "61827bb17127b1c931f05d436b72984818636150e8d0a9c1cdf5cec678b99df6",
+      "negativeControl": true,
+      "reportSha256": "ce01d5fb53abf6b15dc62dd2439d32e6912c8855b32cf74e7cfbccda9417b45d"
+    }
+  },
+  "jarVerification": {
+    "conformance": {
+      "status": "passed",
+      "counts": {
+        "publicMatrices": 3028,
+        "nayukiMatrices": 2400,
+        "rawMatrices": 4320,
+        "capacityCases": 640,
+        "boundaryEstimates": 1920,
+        "gfProducts": 65536,
+        "reedSolomonDegrees": 255,
+        "malformedInputs": 18,
+        "structuredAppendSets": 22,
+        "structuredAppendMatrices": 112,
+        "concurrentMatrices": 256
+      },
+      "reportSha256": "c07bc32be5015ec6b55f806f36a8402c575410ac707f62233256bf6808863e02"
+    },
+    "jsqr": {
+      "status": "passed",
+      "counts": {
+        "matrixDecodes": 232,
+        "pngDecodes": 232,
+        "eciHeaders": 64,
+        "verifiedRgbaPixels": 13855872
+      },
+      "reportSha256": "9bff34df2aea10b6e3098d43ff444affd3e32cce56841ea9f5beea3a7107439b"
+    },
+    "zxing-cpp": {
+      "status": "passed",
+      "counts": {
+        "matrixDecodes": 706,
+        "pngDecodes": 750,
+        "verifiedRgbaPixels": 97805184,
+        "structuredAppendHeaders": 135,
+        "fnc1SecondSymbols": 304,
+        "damagedSymbolsCorrected": 0,
+        "eciTextModeChecks": 70,
+        "highLevelSets": 5,
+        "highLevelSymbols": 44,
+        "independentReconstructions": 5
+      },
+      "reportSha256": "a430ab9ae474b48f770c39e3664452d6d44b97a859f6541ef0e21d900d8020f1"
+    },
+    "zxing-java": {
+      "status": "passed",
+      "counts": {
+        "matrixDecodes": 446,
+        "pngDecodes": 446,
+        "verifiedRgbaPixels": 10008270,
+        "structuredAppendHeaders": 135,
+        "fnc1SecondSymbols": 0,
+        "damagedSymbolsCorrected": 32,
+        "eciTextModeChecks": 0,
+        "highLevelSets": 5,
+        "highLevelSymbols": 44,
+        "independentReconstructions": 10
+      },
+      "reportSha256": "590f7fe983e352c4c3e883f185a6cb112d9aa4a9472e8491526ed187ae6d24a0"
+    },
+    "gs1": {
+      "status": "passed",
+      "operations": 15690,
+      "matched": 15626,
+      "unexpectedDifferences": 0,
+      "idnaDifferences": 24,
+      "dotPolicyDifferences": 40,
+      "structuredDiagnosticDifferences": 0,
+      "corpusSha256": "61827bb17127b1c931f05d436b72984818636150e8d0a9c1cdf5cec678b99df6",
+      "negativeControl": true,
+      "reportSha256": "c9b409100a8218cf753bb63d2ace91e827d181ff5d2dd0eddf2963d41d97ad49"
+    }
+  },
+  "negativeControls": {
+    "conformanceCorruptionAndProcess": 6,
+    "untypedException": 3,
+    "gs1": 1,
+    "allDetected": true
+  },
+  "knownLimitations": {
+    "zxingJavaDefaultScale8": {
+      "case": "alphanumeric-L-0",
+      "scale": 8,
+      "quietZone": 4,
+      "allPixelsMatch": true,
+      "independentControlPixelsIdentical": true,
+      "kotlinPngSha256": "fd902211dbe0d4706772b64e7f1949a5e0e71863dbb3feac46b83113204d4f84",
+      "controlPngSha256": "73dbb0619cf0e1f4a89fe94693c7813febf49fc87cc688db84a1b978146a31b0",
+      "matrixSha256": "afe9eb218390955d8742719b98b5c4735171fe3248b393f77a64437f3c1c6047",
+      "countedAsStrictSuccess": false,
+      "outcomes": [
+        {
+          "error": "NotFoundException"
+        },
+        {
+          "error": "NotFoundException"
+        }
+      ],
+      "matchingOutcomes": true,
+      "detectionFailures": 2,
+      "detectionSuccesses": 0
+    },
+    "platformsNotValidated": [
+      "Native",
+      "JavaScript",
+      "Wasm",
+      "Android"
+    ],
+    "gs1": "Bounded 50-AI catalog; IDNA2003 and intentional lossless dot-value differences are enumerated."
+  },
+  "ciMatrix": {
+    "workflow": ".github/workflows/ci.yml",
+    "kotlin": [
+      "2.2.21",
+      "2.3.21",
+      "2.4.20"
+    ],
+    "jdk": [
+      17,
+      21,
+      25
+    ],
+    "os": [
+      "ubuntu-latest",
+      "macos-latest",
+      "windows-latest"
+    ],
+    "portableJobs": 27,
+    "independentJobs": 1,
+    "aggregateRequiredJobs": 1,
+    "resultLocation": "GitHub Actions checks for the exact public commit"
+  },
+  "runtimeDependencies": [
+    "kotlin-stdlib",
+    "java.base"
+  ]
+}
