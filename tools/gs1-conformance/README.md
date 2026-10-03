@@ -64,8 +64,58 @@ explicitly reported categories are expected:
 This corpus demonstrates tested behavior; it is not a claim of complete WHATWG
 URL or GS1 conformance.
 
-The expected categories are pinned to exactly 24 IDNA and 40 dot-only operation
-differences (21/3 and 12/28 acceptance/value, respectively), with no diagnostic
-differences. Any changed count fails rather than broadening the exception. Reports
-include Kotlin metadata, class-loading origin, JVM nonce/PID, full runtime-class or
-JAR hashes, and Kotlin standard-library SHA-256.
+## Exact reference-runtime profiles
+
+The pinned JavaScript source uses the host Node runtime's WHATWG URL parser.
+Source pinning alone does not pin that parser's semantics. The audited, exact
+reference profiles are Node **24.19.0 / Ada 3.4.4** and Node **24.21.0 / Ada 4.0.0**,
+both with ICU 78.3 and Unicode 17.0. Other versions or dependency tuples fail
+closed until their outcomes are reviewed. The selected profile is always recorded.
+
+Use each installed official Node binary explicitly (the compiler/JDK setup above
+still applies):
+
+```sh
+python3 tools/gs1-conformance/verify_gs1.py --baseline /path/to/SpecQR --node /path/to/node-24.19.0 --node-profile 24.19.0 --report artifacts/gs1-node24.19.json
+python3 tools/gs1-conformance/verify_gs1.py --baseline /path/to/SpecQR --node /path/to/node-24.21.0 --node-profile 24.21.0 --report artifacts/gs1-node24.21.json
+```
+
+The full corpus is unchanged: **5,610 cases and 15,690 operations**, with corpus
+SHA-256 `61827bb17127b1c931f05d436b72984818636150e8d0a9c1cdf5cec678b99df6`.
+`known-url-outcomes.json` fixes all normalized outcomes for the 30 IDNA and 24
+dot-only cases: one invariant Kotlin result set and two explicit JavaScript
+result sets. `known_url_profiles.py` checks exact requests, order, response counts,
+acceptance, normalized URI values and normalized diagnostics. Category membership
+or an unchanged aggregate count cannot excuse another outcome. Ordinary and
+catalog cases still require zero differential failures.
+
+- Node 24.19.0: **64 documented operation differences**, consisting of 24 IDNA
+  (21 acceptance, 3 value) and 40 dot-only (12 acceptance, 28 value).
+- Node 24.21.0: **91 documented operation differences**, consisting of 51 IDNA
+  (48 acceptance, 3 value) and the same 40 dot-only differences.
+- Both profiles require **zero diagnostic differences**.
+
+The extra 27 operations are exactly parse, normalize and validate for these nine
+ASCII ACE hosts: `xn--a`, `xn--`, `xn--abc`, `xn--abc-`, `xn--a-ecp.ru`, `xn--0.pt`,
+`xn--a.test`, `xn--a_.test`, and `xn--%61.test` (normalized to `xn--a.test`). The
+Kotlin adapter rejects these in both profiles under its documented ACE validation
+policy. The newer Node/Ada parser accepts them under the WHATWG non-strict ASCII
+domain rule. This is an intentional reference-standard change, not a claim of a
+Node defect or a reason to change the bounded Kotlin policy.
+
+Primary references: [WHATWG URL IDNA/domain parser](https://url.spec.whatwg.org/#concept-domain-to-ascii)
+and [Ada 4's documented ASCII ACE behavior](https://github.com/ada-url/ada/blob/v4.0.0/src/url_pattern_helpers.cpp#L323-L327).
+The fixture records official Node binary-archive checksums and published source-
+archive checksums. Each run separately fingerprints the actual executing Node
+binary and records all its dependency versions, its path/platform/architecture,
+the JDK identity, Kotlin class/JAR and standard-library hashes, every reference JS
+source file, the fixture, and the audit tools. Sources and executable identities
+must remain unchanged during execution. A published source-archive checksum is
+provenance metadata, not a claim that the archive was built or executed by this audit.
+
+The catalog corruption control still invokes the actual JVM. Three additional
+controls mutate copies of actual process results: making Kotlin accept a rejected
+ACE host, changing an IDNA reference URI while preserving aggregate difference
+counts, and changing a Kotlin IDNA URI while preserving those same counts. The
+exact-outcome guard must reject all three. No profile is selected from candidate
+results, and fixtures are never updated automatically on failure.

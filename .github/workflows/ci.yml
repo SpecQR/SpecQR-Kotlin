@@ -48,7 +48,7 @@ jobs:
           python-version: '3.12'
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: '24'
+          node-version: '24.19.0'
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           repository: SpecQR/SpecQR
@@ -66,13 +66,19 @@ jobs:
       - name: Exact owner and independent Nayuki conformance
         run: python tools/conformance/verify_conformance.py --baseline .baseline/SpecQR
       - name: GS1 catalog and URL differential audit
-        run: python tools/gs1-conformance/verify_gs1.py --baseline .baseline/SpecQR --report artifacts/gs1-conformance.json
+        run: python tools/gs1-conformance/verify_gs1.py --baseline .baseline/SpecQR --node-profile 24.19.0 --report artifacts/gs1-conformance.json
       - name: jsQR matrix and actual PNG detection
         run: python tools/conformance/verify_jsqr.py
       - name: ZXing C++ detection and metadata
         run: python tools/conformance/verify_decoders.py --decoder cpp --dependency-dir .tools/zxing-cpp
       - name: ZXing Java detection and metadata
         run: python tools/conformance/verify_decoders.py --decoder java --dependency-dir .tools/zxing-java
+      - name: Select current WHATWG ASCII-domain reference
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24.21.0'
+      - name: GS1 exact-profile audit with Node 24.21.0
+        run: python tools/gs1-conformance/verify_gs1.py --baseline .baseline/SpecQR --node-profile 24.21.0 --report artifacts/gs1-conformance-node24.21.json
       - name: Preserve verification reports
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

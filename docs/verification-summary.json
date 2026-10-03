@@ -199,7 +199,10 @@
       "structuredDiagnosticDifferences": 0,
       "corpusSha256": "61827bb17127b1c931f05d436b72984818636150e8d0a9c1cdf5cec678b99df6",
       "negativeControl": true,
-      "reportSha256": "ce01d5fb53abf6b15dc62dd2439d32e6912c8855b32cf74e7cfbccda9417b45d"
+      "reportSha256": "381f6abc2896027885c95f069722bed49d4693d7033264357a0d6732e542f65a",
+      "referenceProfile": "24.19.0",
+      "knownOutcomeCases": 54,
+      "knownOutcomeNegativeControls": 3
     }
   },
   "jarVerification": {
@@ -272,14 +275,18 @@
       "structuredDiagnosticDifferences": 0,
       "corpusSha256": "61827bb17127b1c931f05d436b72984818636150e8d0a9c1cdf5cec678b99df6",
       "negativeControl": true,
-      "reportSha256": "c9b409100a8218cf753bb63d2ace91e827d181ff5d2dd0eddf2963d41d97ad49"
+      "reportSha256": "655e39055612648e5f11042f3f8f62fe53630fd97082710b3a76e5ed7303563c",
+      "referenceProfile": "24.19.0",
+      "knownOutcomeCases": 54,
+      "knownOutcomeNegativeControls": 3
     }
   },
   "negativeControls": {
     "conformanceCorruptionAndProcess": 6,
     "untypedException": 3,
     "gs1": 1,
-    "allDetected": true
+    "allDetected": true,
+    "gs1ExactKnownOutcomes": 3
   },
   "knownLimitations": {
     "zxingJavaDefaultScale8": {
@@ -310,7 +317,7 @@
       "Wasm",
       "Android"
     ],
-    "gs1": "Bounded 50-AI catalog; IDNA2003 and intentional lossless dot-value differences are enumerated."
+    "gs1": "Bounded 50-AI catalog. With Node24.19/Ada3.4.4,64 documented differences (24 IDNA+40 dot); with Node24.21/Ada4.0.0,91 (51 IDNA+40 dot). Only nine ACE-host reference responses change; all Kotlin responses are invariant. Exact outcomes are pinned for all54 IDNA/dot rows."
   },
   "ciMatrix": {
     "workflow": ".github/workflows/ci.yml",
@@ -332,10 +339,190 @@
     "portableJobs": 27,
     "independentJobs": 1,
     "aggregateRequiredJobs": 1,
-    "resultLocation": "GitHub Actions checks for the exact public commit"
+    "resultLocation": "GitHub Actions checks for the exact public commit",
+    "requiredGs1ReferenceNodes": [
+      "24.19.0",
+      "24.21.0"
+    ]
   },
   "runtimeDependencies": [
     "kotlin-stdlib",
     "java.base"
-  ]
+  ],
+  "gs1ReferenceProfiles": {
+    "24.19.0": {
+      "runtimeVersions": {
+        "node": "24.19.0",
+        "ada": "3.4.4",
+        "icu": "78.3",
+        "unicode": "17.0"
+      },
+      "nodeExecutableSha256": "bc17c508ffeed0ec622934f9b7fa72f8e78da65350e63c3eceb56fa688aa5e12",
+      "candidateJdk": "17.0.20.1+1",
+      "fixtureSha256": "e0eae404976507186f7792c184c3262717e47d3c9c5c967c79e033afd5457b44",
+      "routes": {
+        "source": {
+          "operations": 15690,
+          "matched": 15626,
+          "idnaAcceptanceDifferences": 21,
+          "idnaValueDifferences": 3,
+          "dotAcceptanceDifferences": 12,
+          "dotValueDifferences": 28,
+          "diagnosticDifferences": 0,
+          "unknownDifferences": 0,
+          "exactKnownOutcomes": {
+            "passed": true,
+            "cases": 54,
+            "operations": 150,
+            "idnaCases": 30,
+            "dotCases": 24,
+            "kotlinOutcomesSha256": "e0dfe821e7bdaee66ac549a2c3d6c02502461d5a4ab9d64dc42d39ff6f1b5095",
+            "referenceOutcomesSha256": "a48a426c7b86061b200497bc51c2d0f9bdc4644e0f6702d1066bdfa234f52ccf"
+          },
+          "exactOutcomeNegativeControls": [
+            {
+              "fault": "candidate-accepts-rejected-ace",
+              "detected": true,
+              "aggregateDifferenceCountsUnchanged": false
+            },
+            {
+              "fault": "same-count-wrong-reference-idna-uri",
+              "detected": true,
+              "aggregateDifferenceCountsUnchanged": true
+            },
+            {
+              "fault": "same-count-wrong-candidate-idna-uri",
+              "detected": true,
+              "aggregateDifferenceCountsUnchanged": true
+            }
+          ],
+          "reportSha256": "381f6abc2896027885c95f069722bed49d4693d7033264357a0d6732e542f65a"
+        },
+        "jar": {
+          "operations": 15690,
+          "matched": 15626,
+          "idnaAcceptanceDifferences": 21,
+          "idnaValueDifferences": 3,
+          "dotAcceptanceDifferences": 12,
+          "dotValueDifferences": 28,
+          "diagnosticDifferences": 0,
+          "unknownDifferences": 0,
+          "exactKnownOutcomes": {
+            "passed": true,
+            "cases": 54,
+            "operations": 150,
+            "idnaCases": 30,
+            "dotCases": 24,
+            "kotlinOutcomesSha256": "e0dfe821e7bdaee66ac549a2c3d6c02502461d5a4ab9d64dc42d39ff6f1b5095",
+            "referenceOutcomesSha256": "a48a426c7b86061b200497bc51c2d0f9bdc4644e0f6702d1066bdfa234f52ccf"
+          },
+          "exactOutcomeNegativeControls": [
+            {
+              "fault": "candidate-accepts-rejected-ace",
+              "detected": true,
+              "aggregateDifferenceCountsUnchanged": false
+            },
+            {
+              "fault": "same-count-wrong-reference-idna-uri",
+              "detected": true,
+              "aggregateDifferenceCountsUnchanged": true
+            },
+            {
+              "fault": "same-count-wrong-candidate-idna-uri",
+              "detected": true,
+              "aggregateDifferenceCountsUnchanged": true
+            }
+          ],
+          "reportSha256": "655e39055612648e5f11042f3f8f62fe53630fd97082710b3a76e5ed7303563c"
+        }
+      }
+    },
+    "24.21.0": {
+      "runtimeVersions": {
+        "node": "24.21.0",
+        "ada": "4.0.0",
+        "icu": "78.3",
+        "unicode": "17.0"
+      },
+      "nodeExecutableSha256": "7fde7b8afa198da66257f42ee2001d874c7355631e6d1579a5fb5ef1f246df4c",
+      "candidateJdk": "17.0.20.1+1",
+      "fixtureSha256": "e0eae404976507186f7792c184c3262717e47d3c9c5c967c79e033afd5457b44",
+      "routes": {
+        "source": {
+          "operations": 15690,
+          "matched": 15599,
+          "idnaAcceptanceDifferences": 48,
+          "idnaValueDifferences": 3,
+          "dotAcceptanceDifferences": 12,
+          "dotValueDifferences": 28,
+          "diagnosticDifferences": 0,
+          "unknownDifferences": 0,
+          "exactKnownOutcomes": {
+            "passed": true,
+            "cases": 54,
+            "operations": 150,
+            "idnaCases": 30,
+            "dotCases": 24,
+            "kotlinOutcomesSha256": "e0dfe821e7bdaee66ac549a2c3d6c02502461d5a4ab9d64dc42d39ff6f1b5095",
+            "referenceOutcomesSha256": "a6235608c0039534ec930cbfaa03fb1d2d996bff230cc837352b008109ea110b"
+          },
+          "exactOutcomeNegativeControls": [
+            {
+              "fault": "candidate-accepts-rejected-ace",
+              "detected": true,
+              "aggregateDifferenceCountsUnchanged": false
+            },
+            {
+              "fault": "same-count-wrong-reference-idna-uri",
+              "detected": true,
+              "aggregateDifferenceCountsUnchanged": true
+            },
+            {
+              "fault": "same-count-wrong-candidate-idna-uri",
+              "detected": true,
+              "aggregateDifferenceCountsUnchanged": true
+            }
+          ],
+          "reportSha256": "c670ae3a622d9d11d51e120507a712e01697d92a1fc03ffbb843457d113bcd79"
+        },
+        "jar": {
+          "operations": 15690,
+          "matched": 15599,
+          "idnaAcceptanceDifferences": 48,
+          "idnaValueDifferences": 3,
+          "dotAcceptanceDifferences": 12,
+          "dotValueDifferences": 28,
+          "diagnosticDifferences": 0,
+          "unknownDifferences": 0,
+          "exactKnownOutcomes": {
+            "passed": true,
+            "cases": 54,
+            "operations": 150,
+            "idnaCases": 30,
+            "dotCases": 24,
+            "kotlinOutcomesSha256": "e0dfe821e7bdaee66ac549a2c3d6c02502461d5a4ab9d64dc42d39ff6f1b5095",
+            "referenceOutcomesSha256": "a6235608c0039534ec930cbfaa03fb1d2d996bff230cc837352b008109ea110b"
+          },
+          "exactOutcomeNegativeControls": [
+            {
+              "fault": "candidate-accepts-rejected-ace",
+              "detected": true,
+              "aggregateDifferenceCountsUnchanged": false
+            },
+            {
+              "fault": "same-count-wrong-reference-idna-uri",
+              "detected": true,
+              "aggregateDifferenceCountsUnchanged": true
+            },
+            {
+              "fault": "same-count-wrong-candidate-idna-uri",
+              "detected": true,
+              "aggregateDifferenceCountsUnchanged": true
+            }
+          ],
+          "reportSha256": "c02ef9e5d28a72ff63077d0e70b27a35a9b8009ee73e47dcb29b7e49b61dd325"
+        }
+      }
+    }
+  }
 }

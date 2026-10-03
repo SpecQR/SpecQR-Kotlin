@@ -235,6 +235,28 @@ Unicode host は Java の `IDN.toASCII` による **IDNA2003 / Unicode 3.2** で
 
 `xn--a`、`xn--abc-`、`xn--a-ecp` のような不正 ACE は拒否します。`é.com`、`例え.テスト` のような一般的な名前は punycode になります。ASCII 表記ならすべて IDNA 制限を回避できるわけではありません。Java とブラウザで同じ host になる保証が必要なアプリケーションでは、承認した ASCII non-ACE hostname を使うか、実際に使う ACE hostname を両側で個別に検証してください。到達性、DNS の正当性、同形文字攻撃、URL の信頼性をこのヘルパーで判定しないでください。URL 差分検証の手順と区分は [GS1 differential audit](../tools/gs1-conformance/README.md) を参照してください。
 
+### 参照 URL runtime による ACE 差分
+
+比較対象の Node/Ada 版を固定して記録します。Node 24.19.0 / Ada 3.4.4 は次の 9 入力を拒否し、Node 24.21.0 / Ada 4.0.0 は受け付けます。Kotlin/JVM adapter は両方の試験で同じ ACE round-trip 検証を行い、全 9 入力を拒否します。通常・catalog の 15,540 operations は両参照で一致しています。
+
+[現在の WHATWG domain-to-ASCII](https://url.spec.whatwg.org/#concept-domain-to-ascii) は、非 strict 処理の ASCII domain を Unicode ToASCII の妥当性とは別に受け付ける近道を定めています。新しい Node の動作はこの規則によるものです。Kotlin の ACE 検証との契約差分であり、これらの URL がすべての環境で不正または危険だという意味ではありません。一般の ASCII host や正常な Unicode host をまとめて拒否する方針でもありません。
+
+各行を `https://HOST/01/04912345678904` として検査します。Node 24.21 は parse / validate に成功し、normalize は下表の host と同じ path を返します。Node 24.19 と Kotlin は parse / normalize を `INVALID_GS1` として拒否し、validate は `GS1_DIGITAL_LINK_INVALID_URI` を返します。
+
+| 入力 HOST | Node 24.21 normalize 後の HOST |
+| --- | --- |
+| `xn--a` | `xn--a` |
+| `xn--` | `xn--` |
+| `xn--abc` | `xn--abc` |
+| `xn--abc-` | `xn--abc-` |
+| `xn--a-ecp.ru` | `xn--a-ecp.ru` |
+| `xn--0.pt` | `xn--0.pt` |
+| `xn--a.test` | `xn--a.test` |
+| `xn--a_.test` | `xn--a_.test` |
+| `xn--%61.test` | `xn--a.test` |
+
+全 15,690 operations の差分は Node 24.19 では **64**（IDNA 24 + dot policy 40）、Node 24.21 では **91**（IDNA 51 + dot policy 40）。追加の 27 は上記 9 入力 × 3 operations だけです。audit は 30 IDNA cases すべてについて Kotlin の固定結果と各参照 runtime の固定結果を照合し、未知の結果を受け入れません。Node / Ada / ICU / Unicode / JDK の版、実行バイナリ・fixture の fingerprint、profile 内の改変を検出する negative control も記録します。CI は両版の audit を必須として実行します。
+
 ## 資源上限
 
 入力文字列は最大 1,000,000 UTF-16 code units、要素数は 16,384。要素 iterable の AI / value 合計テキスト量にも 1,000,000 の work budget を適用します。path / query component と出力にも上限があります。無限 iterator を最後まで走査せず上限で停止しますが、iterator 自体が長時間停止することまでは防げません。公開定数は `MAX_INPUT_CHARACTERS` と `MAX_ELEMENTS` です。
