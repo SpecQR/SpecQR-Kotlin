@@ -45,7 +45,7 @@ class Build {
     }
   }
   static void compileKotlin(Path source, Path out, String cp, Path home) throws Exception {
-    List<String> args = new ArrayList<>(List.of(java(), "-Dfile.encoding=UTF-8", "-Xmx1g", "-cp", home.resolve("lib/*").toString(), "org.jetbrains.kotlin.cli.jvm.K2JVMCompiler", "-kotlin-home", home.toString(), "-Xjdk-release=17", "-language-version", "2.2", "-api-version", "2.2", "-no-reflect", "-Werror", "-module-name", "specqr", "-d", out.toString()));
+    List<String> args = new ArrayList<>(List.of(java(), "-Dfile.encoding=UTF-8", "-Xmx1g", "-cp", (home.resolve("lib").toString() + File.separator + "*"), "org.jetbrains.kotlin.cli.jvm.K2JVMCompiler", "-kotlin-home", home.toString(), "-Xjdk-release=17", "-language-version", "2.2", "-api-version", "2.2", "-no-reflect", "-Werror", "-module-name", "specqr", "-d", out.toString()));
     if (cp != null) args.addAll(List.of("-classpath", cp));
     try (var paths = Files.walk(source)) { paths.filter(p -> p.toString().endsWith(".kt")).sorted().forEach(p -> args.add(p.toString())); }
     run(args);

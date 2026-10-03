@@ -149,7 +149,7 @@ fun main() {
 }
 """, StandardCharsets.UTF_8);
       Path home = STDLIB.getParent().getParent();
-      run(temp, tool("java"), "-cp", home.resolve("lib/*").toString(),
+      run(temp, tool("java"), "-cp", (home.resolve("lib").toString() + File.separator + "*"),
           "org.jetbrains.kotlin.cli.jvm.K2JVMCompiler", "-kotlin-home", home.toString(),
           "-Xjdk-release=17", "-language-version", "2.2", "-api-version", "2.2", "-no-reflect", "-Werror",
           "-classpath", cp, "-d", temp.toString(), kotlinSource.toString());
