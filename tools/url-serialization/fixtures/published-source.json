@@ -1,0 +1,287 @@
+{
+  "commit": "2e0637048f8393686817f1ed768c7863c5a4f6c2",
+  "tree": "3610b35e624cb91ee9e7264cdc372c7bfd841f83",
+  "files": {
+    ".gitattributes": {
+      "gitBlob": "d0aaa0ec348bb6586226a2860fd0394b24e73285",
+      "sha256": "82de3ed2061c4b602a0072681d9f7fa035cc3b1906d856e4c173821acedace4d"
+    },
+    ".github/workflows/ci.yml": {
+      "gitBlob": "e67e5f913e1ecea312be6fec2e7f2e8ea76603bb",
+      "sha256": "fd5ff279e54b7fa0c3317fb2a9fc8ee14dbcb1b3dd9ea4fc0ede63c83c093a2b"
+    },
+    ".gitignore": {
+      "gitBlob": "b653d8e18cccd32fe9a1b78beb5024ad5a4479a6",
+      "sha256": "591125f8777a28cc85d4d24adab8e91bc16be82301bc0a9dbffa405f45314aeb"
+    },
+    "CONTRIBUTING.md": {
+      "gitBlob": "cf7076a717c361c2c43d84fb73a79759cf21e9f0",
+      "sha256": "9458d05af9521d2473b3a1339eb25adc75f902a3618ba67ae97e0b6ed1d8496f"
+    },
+    "LICENSE": {
+      "gitBlob": "ffac891ff1e9b7e971d1b91921921f1335dd60a7",
+      "sha256": "1157df45638ac01cda5a925b546618c19a45835e4a9494e711d8047f5e5f39c9"
+    },
+    "NOTICE": {
+      "gitBlob": "c8034065b3b4f7254d7e2a106f0bad1a327cc6e8",
+      "sha256": "c87bff8ca3d5547e744d541b4fcdfc6d4e583d1bf2c946b85ee26ad872e50302"
+    },
+    "README.md": {
+      "gitBlob": "cfd35148a76cbdf30d73a1b082033fa8508bbd2e",
+      "sha256": "354b0088bbb74c0c7c39d67928f0608a7562e6af4c5f4c1a24382c739de06f42"
+    },
+    "SECURITY.md": {
+      "gitBlob": "4cdbcf83a852ba6e44a65867a4c2a87bbb9daea6",
+      "sha256": "f3cfe97d18134071c84642344c77f5acc76b1ad3e382e568b60ea061e8ee5680"
+    },
+    "docs/api.md": {
+      "gitBlob": "6274a9e1427394477d3895901ad8b9316457a93a",
+      "sha256": "a5b239dc008da6d9bae55b1659306025d3b7bd73fd8510d7f1922ad832720040"
+    },
+    "docs/cross-port-regressions.md": {
+      "gitBlob": "fb31b84f780cf04db9716056f11bd7dd05d0429f",
+      "sha256": "6023f2e1b9e723129e34421218a14f54193d193e6731ed56460218f0288fb1d3"
+    },
+    "docs/gs1.md": {
+      "gitBlob": "8eefcfa413eda0fcacda33e5c7a15c1da611c518",
+      "sha256": "b715c5fe4990fe62877c7f4f6993c98a846ebea40a90dc5fc8a0cf785c262c36"
+    },
+    "docs/structured-append.md": {
+      "gitBlob": "6a3fa1b101a7f9fdf98bd5479977e7aa37ce7413",
+      "sha256": "56d5a88f55ce67b6812e47cdd91a157cfe00052ede682200a426f65a052996cb"
+    },
+    "docs/verification-summary.json": {
+      "gitBlob": "5851fb8b28878c3bbc9e79eb76de9b46c1ba3ac4",
+      "sha256": "fc4673ff0ca3fe2e72342aeb60dac92609bea532c95d9571897c3c8bc81c488f"
+    },
+    "docs/verification.md": {
+      "gitBlob": "6d167e19e60b844bffd62e6dce31d184f881fde2",
+      "sha256": "2f0ccfd81fd049c761b05c9a888b9990aaa3b38bb39d5df69f16205afd12d918"
+    },
+    "examples/Basic.kt": {
+      "gitBlob": "11226a193478ddf4b41814bbf048cb2d06faeb48",
+      "sha256": "8fc8e256a6d7fbd810722574c18eec20867284a3ac01f4fc99a37afbb6578e8a"
+    },
+    "examples/segments.json": {
+      "gitBlob": "b61afa854addffd403145bc64049206a03d07c1f",
+      "sha256": "b22d93a4d0321f63db28631e2ed4266ba4de14752da20abcf8f57db5197fee3f"
+    },
+    "src/main/kotlin/io/specqr/Capacity.kt": {
+      "gitBlob": "401a31a3e241191be9996f60c1821483c2d5fc8e",
+      "sha256": "679bcaee1f59bc59766c5a68de7151c2e83e0e60c8be0bd82384e2135cb9a6cc"
+    },
+    "src/main/kotlin/io/specqr/Core.kt": {
+      "gitBlob": "e90b704857a6baa61def8dd87e2806c53dacb299",
+      "sha256": "cf9225886f7ace12d99bbb573b659a2002348203f7f19790ba74ead19115fb7a"
+    },
+    "src/main/kotlin/io/specqr/Gs1.kt": {
+      "gitBlob": "3e0897152bea453ff4db3f3e10ceaec95c93a5f0",
+      "sha256": "7c03d0f1a0e7514283206435583800b6556a0da569cd65651bbaaf150deb175f"
+    },
+    "src/main/kotlin/io/specqr/Json.kt": {
+      "gitBlob": "daba86ac9540a993656ec62095a385f49dc31120",
+      "sha256": "24dfaaeab0b58efef1acaeefbbe7a38667863a55c3add7747857ef1880b5ff95"
+    },
+    "src/main/kotlin/io/specqr/Kanji.kt": {
+      "gitBlob": "c0ef1878b10996e9c9bf443f193119c4227ad72e",
+      "sha256": "9eb034f2b8b28fdfa030e94fa2f88f653907bbae1b76486883efc5104988d4bb"
+    },
+    "src/main/kotlin/io/specqr/Main.kt": {
+      "gitBlob": "0336b1e5411890e93a887193ef2c4d9f4fe3da10",
+      "sha256": "925c427591b38c24c12d59d440be6783c3e7a98fc730efac2bffef6db7bf533f"
+    },
+    "src/main/kotlin/io/specqr/Options.kt": {
+      "gitBlob": "69a27440b755edc3bc2f593013548d1b7d9ea314",
+      "sha256": "1ea450abd8e318d608cb934b38d758ca678e73c05f3fdfcfe442458d37d2ccfb"
+    },
+    "src/main/kotlin/io/specqr/Plan.kt": {
+      "gitBlob": "3d2163dd431ea4b56bd0b8d71fc1661a06e0583a",
+      "sha256": "54884a9af4518a77b2c85623a6ced0f72f0f5089d943a369d35fe946f4868804"
+    },
+    "src/main/kotlin/io/specqr/QrCode.kt": {
+      "gitBlob": "0599084b8b5c09bfbdab97e37870ecc3492ff48a",
+      "sha256": "2420980fc1dc6044afb4fd9521717b2f7f7ebe65cedda148c897513f63c276f2"
+    },
+    "src/main/kotlin/io/specqr/Render.kt": {
+      "gitBlob": "e158a81006c6866cf83e4694ff94d17b353f8e82",
+      "sha256": "b944e062bd292b51dbf2b415aecf391e165e2a3609b79872d997acda24b9f30b"
+    },
+    "src/main/kotlin/io/specqr/Segment.kt": {
+      "gitBlob": "19552ada6eba7895952272204223971a656288cb",
+      "sha256": "25cb6f31ef93c5f0abecf9d04111c1e58b08f43ffeece36f3cf6799695dfc040"
+    },
+    "src/main/kotlin/io/specqr/Segments.kt": {
+      "gitBlob": "c1639a1f566c0b6d7e83eafe6b323981afd85d70",
+      "sha256": "91457823d1f2f3c5bbc4b88236dbc72cdee1968484039ebacb894c23dd36288d"
+    },
+    "src/main/kotlin/io/specqr/SpecQr.kt": {
+      "gitBlob": "e8ce82794bae19a0cc5507007b43e3fb09ecda88",
+      "sha256": "88822257f66d0f75afe4445e4cf8c8188f90e1c1e2e1b3bf3a54f9fa1fb214b8"
+    },
+    "src/main/kotlin/io/specqr/SpecQrException.kt": {
+      "gitBlob": "76f7a855da2eb3a67066b39b5f0435df3ec28f0e",
+      "sha256": "e8311e6e498ff342a7b1a5e3db9f76664003aaa25d87746d60030c16701b0708"
+    },
+    "src/main/kotlin/io/specqr/StructuredAppend.kt": {
+      "gitBlob": "7c1280f1ca25fb12c212b077d2a2e915bd6234ec",
+      "sha256": "632147f4cfd9648af0a636c6a0973513e57e73159ad5984916bf87055a1c68dd"
+    },
+    "src/main/kotlin/io/specqr/Tables.kt": {
+      "gitBlob": "79ab75bf17f1eea4aaf6c29d4c12a1b665e5c746",
+      "sha256": "d560afe9e7b0555f063f8f2931f5793a0534fefc24ff9dcd82552e925616634e"
+    },
+    "src/test/java/io/specqr/ApiTests.java": {
+      "gitBlob": "d1bdecbf3706a7c60d04293b02c64276e5c9aadd",
+      "sha256": "3749f65bb2af8785b2bf476735f762041d867318fb3747208282384843fd994b"
+    },
+    "src/test/java/io/specqr/CliTests.java": {
+      "gitBlob": "b7f26d782d1c292329b05e26c8fbe0f889c930b2",
+      "sha256": "b6e8a7ad4e237b9bfd7e33c7313bf426de3d0149221ce535c3685e63076d628d"
+    },
+    "src/test/java/io/specqr/ConformanceDriver.java": {
+      "gitBlob": "b135dd9a4ab501a9d83670aadae971093b719831",
+      "sha256": "870ffea813d4dbb99d3f2e630da09471a15794d10f8e32d8c14494cad22be14f"
+    },
+    "src/test/java/io/specqr/CoreTests.java": {
+      "gitBlob": "710e67906bcc5b23fed96ed46ee9061f377841e7",
+      "sha256": "8c4f53a0f5424fe7f24374145e5e6ab3a56136c69b4b64ed45ed9e5bedd08bc1"
+    },
+    "src/test/java/io/specqr/CrossPortRegressionTests.java": {
+      "gitBlob": "6e7b928f62c07d349d9df0873f4792db974ba8a0",
+      "sha256": "b0652af33085d750be30cbcfccb0a519d184b82e139f894f06f68ed9b243b2b2"
+    },
+    "src/test/java/io/specqr/Gs1Tests.java": {
+      "gitBlob": "3bc02255b3ee0e76489e7200fa0e546f3bcac084",
+      "sha256": "dab85fbdccbb974db47b0e73f717f05ae9c10dd0d21299e5ebb25d46ca8de1b8"
+    },
+    "src/test/java/io/specqr/RenderTests.java": {
+      "gitBlob": "dae742cca591894167db9760e10a6d8ba67e996d",
+      "sha256": "e8db09f5d30f5689e48fb3ebb955754c7d3ca148b5ae6174844b79a992f6ade8"
+    },
+    "src/test/java/io/specqr/ResourceReviewTests.java": {
+      "gitBlob": "d2e7a4dabd39a63fb3df1bc38321676bcd1f3141",
+      "sha256": "c960393f44ff5ccf37ad67e485230e891d02c9b04842e6d00a9622a54d8598ef"
+    },
+    "src/test/java/io/specqr/SegmentTests.java": {
+      "gitBlob": "c892779d12ffeea1048c8838ccbf950749a788c8",
+      "sha256": "67a5f62af094dacdf7e628d0ed6bd4b67ed22f3711c22ab37440101204ef43c8"
+    },
+    "src/test/java/io/specqr/StructuredAppendTests.java": {
+      "gitBlob": "7184eca2a5a1c9c1024de5fac3007aadc59da9d9",
+      "sha256": "3c7686234b4317ae296bc0f62031776cb8d1ad1892daf13675bf126effd862b4"
+    },
+    "src/test/java/io/specqr/TestRunner.java": {
+      "gitBlob": "78b58cd26632513915cd378045c2a47f12ac442f",
+      "sha256": "77ee1d3396dd8fd5f99711ec77c7e4070ed28b7061e6e485f0af00ef160fcffb"
+    },
+    "src/test/kotlin/io/specqr/CoreSegmentTests.kt": {
+      "gitBlob": "b90a182167a3783b8a2df554fb9dcd0b4fdff278",
+      "sha256": "ff6adf0ee372f8c5466d2f7394f1f0c9330bb8cbdf3092b948d6e1dc53b10e84"
+    },
+    "src/test/kotlin/io/specqr/KotlinInteropChecks.kt": {
+      "gitBlob": "d6e8fcc6ad3404cecb73fc78a698188568c877d9",
+      "sha256": "f37ffbc83fc61a7d1e68e3906e90382fb6e6ead42c8889d34dcf8108ca39bc9c"
+    },
+    "src/test/kotlin/io/specqr/KotlinTests.kt": {
+      "gitBlob": "f811c2c3c53decec3fee8d8a263f4adc5df1d4db",
+      "sha256": "90983c9549968aa46abc7239ca0c3f7cd25b42e0a7b8d50af58768dd2f3dd737"
+    },
+    "tools/Build.java": {
+      "gitBlob": "8a27f16c1ee041bab3fe3b5ccfd1cad729e61aa9",
+      "sha256": "fa44d84274db27d9d448279a09ba202a8e53bf9605fe87dd4255085bb5de0dba"
+    },
+    "tools/SetupKotlin.java": {
+      "gitBlob": "8c437194007c71d3c9bec3005e9ffd78674d6437",
+      "sha256": "65ff68378023da4d5561eaa74e61ef2f3e4276e17edc98299cb3500cda55f6e9"
+    },
+    "tools/VerifyPackage.java": {
+      "gitBlob": "930f8524d5b8a3b907dcc5b4b637292c2a107745",
+      "sha256": "730ad896afae5c8dac363b76e9b94f26b75b4b0e0ff66ca82658f362b5305fd3"
+    },
+    "tools/conformance/README.md": {
+      "gitBlob": "10683cf25c9dfa2365239dca4746b795c6d5b0c6",
+      "sha256": "8836d48352297f5e037cc8467b6c73fd5661b4b548e65ec4d5a799ff1d271a34"
+    },
+    "tools/conformance/decode_jsqr.mjs": {
+      "gitBlob": "d922a5843667012fb577f424bfb84b5834fd0d6d",
+      "sha256": "5455d6921f24a3c4b5ede8ca4e61be9fcae0a9654677f9719677dfe5eb7fb8a0"
+    },
+    "tools/conformance/eci-control.mjs": {
+      "gitBlob": "616456943f3bb43b3b740b7ce47e7590f20e8fcb",
+      "sha256": "4852276b75039a974973e2356fddedf665aab5c303b91076cb1d880ee6148de7"
+    },
+    "tools/conformance/node_identity.mjs": {
+      "gitBlob": "e313f5834eaa3655bd8bdbb740ebb7d3674cdf06",
+      "sha256": "7e2ca3a5c38a34732f678611e7e45eee79cd7658f2dda716565bd96fdf9926dc"
+    },
+    "tools/conformance/oracle.mjs": {
+      "gitBlob": "3d0aad745b28d6438daf5e6b93c2bb60e5492993",
+      "sha256": "33c79fe179b512ca59de33aad53ac04627d2c7b4825ed2c0644cb8037e29dbe5"
+    },
+    "tools/conformance/package-lock.json": {
+      "gitBlob": "742427dfe47025907653496623dcb31b23bbf6bd",
+      "sha256": "c019f35e2301715bd412c71d90e621316445fd2a7ddb80fca60342392287f70e"
+    },
+    "tools/conformance/package.json": {
+      "gitBlob": "6bb7528ce47fe96f258c9de16333720bc0c722f6",
+      "sha256": "d9d70451c44baaf6f6fef0bf6d3efb1c4f746405006d0e8fce70870271b7dd8a"
+    },
+    "tools/conformance/protocol.py": {
+      "gitBlob": "a1033f3a17af000db162527b0c8c8842c1f18576",
+      "sha256": "f12e2d3a588e79a8cb6fba6d52c6bbabeeb91e30228e4a75d43ad75471ac8094"
+    },
+    "tools/conformance/structured-append-cases.json": {
+      "gitBlob": "0e53ae95215f8b78548ace1c48ca35d62e142b3c",
+      "sha256": "cf23690ef0e49060c2a3913f9e0cf6bd167b8c0bc103d4dcb863e651f0d7119b"
+    },
+    "tools/conformance/structured-append-golden.mjs": {
+      "gitBlob": "7be6ef4f6a621807255e924c563aeaef557cec15",
+      "sha256": "a757fc0a4daceeedc861bcbef743a440d473f656def1d0e0754c3213250cb6d8"
+    },
+    "tools/conformance/verify_conformance.py": {
+      "gitBlob": "c4f5aec4f47ba361201b3f044f0670d891def337",
+      "sha256": "44fdab8e24bb4ca6f6387213f2642fac0be07bfce38cff66d77ba33044f98e7f"
+    },
+    "tools/conformance/verify_decoders.py": {
+      "gitBlob": "b2cf3140d22b4d65cb2ff8a761778be5335c00b6",
+      "sha256": "eb5f2719e19de693cc6059c910e2e99e18258b4fba09f14abc4f3d33835c8ea6"
+    },
+    "tools/conformance/verify_jsqr.py": {
+      "gitBlob": "0b4bb66c136d51c1ffc5516ff082f9c7c28ef95e",
+      "sha256": "184d3714813a7e18aebda52dc67971b75e8e11bdef572b9135f16694ca75166f"
+    },
+    "tools/conformance/zxing-cpp-requirements.txt": {
+      "gitBlob": "01168c1383265a8405272fbde742313275cca564",
+      "sha256": "c44d88445ebed50625951b7289af9b4acbf5aece869e6aafd03f9aba7bc99429"
+    },
+    "tools/conformance/zxing-java/DecodeSymbols.java": {
+      "gitBlob": "9c1648bc1076224ced3ea660486a91e6259e4b19",
+      "sha256": "e8db286f8d05f11f0b8889020842c163034ff00c4d72f25de0ddd6e1b1bc5ef2"
+    },
+    "tools/gs1-conformance/Gs1AuditProbe.java": {
+      "gitBlob": "5367f71158dd1477fafaac7ee367cf033033f931",
+      "sha256": "9c86ffd381d72966d4bf7d6a98ed6a971dbab483f04a8a529087a55e0e91bd3b"
+    },
+    "tools/gs1-conformance/README.md": {
+      "gitBlob": "78cdc5d334ef9c33373d9b8be4f0a203dfd7a51d",
+      "sha256": "fb717843069e866c5afa79c416720ac0ffe605e1519a423adb6ced13f4daaed1"
+    },
+    "tools/gs1-conformance/known-url-outcomes.json": {
+      "gitBlob": "9d3dd92dc1178402c174391b4e4bb8b2839bf475",
+      "sha256": "e0eae404976507186f7792c184c3262717e47d3c9c5c967c79e033afd5457b44"
+    },
+    "tools/gs1-conformance/known_url_profiles.py": {
+      "gitBlob": "5bcb21395f964c0adab651705f382c76269c0f66",
+      "sha256": "eb5c38449af7c01413c501ff2be1dcc3053262aa09b21f3c04d79afb29c9f008"
+    },
+    "tools/gs1-conformance/oracle.mjs": {
+      "gitBlob": "9e93141945ac384d2b27033628f307e870f94dea",
+      "sha256": "261b3ffdba83b3cc37a3650b0bfa2fe31a05818baee39e752a41a01f89ab2576"
+    },
+    "tools/gs1-conformance/verify_gs1.py": {
+      "gitBlob": "de8d794b5c54489ca5b309f20f4336cdd6261fef",
+      "sha256": "db0cc29c2df9a16644063f823779bbcdca68bd347f867686ddf8a9e7a82e382b"
+    }
+  },
+  "status": ""
+}

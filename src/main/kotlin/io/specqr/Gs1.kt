@@ -608,7 +608,7 @@ object Gs1 {
         for (e in path) pathname.append('/').append(encode(e.ai!!, 0)).append('/').append(encode(e.value!!, 0))
         query.sortWith(compareBy<Element> { it.ai }.thenBy { it.value })
         val search = query.joinToString("&") { encode(it.ai!!, 1) + "=" + encode(it.value!!, 1) }
-        return Url(url.scheme, url.authority, pathname.toString(), search.ifEmpty { null }, null).serialize()
+        return Url(url.scheme, url.authority, pathname.toString(), search.ifEmpty { null }, url.fragment).serialize()
     }
     private fun pathParts(path: String): List<String> {
         val value = path.trim('/')
