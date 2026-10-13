@@ -1,10 +1,10 @@
 # GS1 / Digital Link
 
-This Kotlin/JVM edition provides Kotlin properties and Java-compatible accessors. The Java snippets below deliberately demonstrate the interop API; the same implementation is executed from Kotlin.
+この Kotlin/JVM 版は Kotlin properties と Java 互換 accessors を提供します。以下の Java コード例は、相互運用 API を示すために意図的に Java で記述しています。Kotlin からも同じ実装を実行します。
 
 Kotlin では `Options(gs1 = true)` のような名前付き引数と `options.copy(...)` を利用できます。以下の Java 構文例は相互運用 API の例です。
 
-`Gs1` provides a bounded 50-AI catalog, element-string helpers, check digits, and local Digital Link parsing. It is not a full GS1 validator, resolver, or certification service.
+`Gs1` は、50 AI に限定した catalog、element-string helpers、check digits、ローカルの Digital Link 解析を提供します。完全な GS1 validator、resolver、認証サービスではありません。
 
 SpecQR-Kotlin は、固定した SpecQR のカタログに含まれる **50 個の具体的な AI** を扱います。GS1 全仕様、すべての業種・用途規則、GS1 Digital Link の圧縮・resolver・canonicalization は実装しません。このライブラリによる生成・検証は GS1 認証を意味しません。ヘルパーは DNS 解決やネットワーク通信を行いません。
 

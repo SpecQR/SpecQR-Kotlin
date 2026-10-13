@@ -1,121 +1,52 @@
 # GS1 differential audit
 
 This development-only audit uses Python 3's standard library, a JDK 17+, Kotlin 2.4.20 and Node.
-The published Kotlin library has no Python, Node, JavaScript, or encoder/decoder runtime dependency; its only external runtime dependency is
-the Kotlin standard library. The Java test probe invokes the actual public Kotlin GS1 implementation.
 
-From the repository root, with `java`, `javac` and `node` on `PATH`:
+公開する Kotlin ライブラリは、Python、Node、JavaScript、エンコーダー・デコーダーを runtime の依存関係に持ちません。外部の runtime 依存関係は Kotlin 標準ライブラリだけです。Java テスト probe は実際の公開 Kotlin GS1 実装を呼び出します。
+
+`java`、`javac`、`node` を `PATH` に通し、リポジトリのルートから実行します。
 
 ```sh
 export KOTLIN_HOME=/absolute/path/to/kotlinc
 python3 tools/gs1-conformance/verify_gs1.py --baseline /path/to/SpecQR
 ```
 
-The baseline must be the unmodified SpecQR JavaScript checkout at
-`15ad15e5c770ea0e39072f8f88b2733018f02ffd`. Override tools with `--java`, `--javac`,
-`--node` or `JAVA`, `JAVAC`, `NODE`. `--report` selects the JSON report location
-(default `build/gs1-conformance.json`). Kotlin sources are compiled separately into temporary storage with JVM 17
-bytecode, language/API 2.2 and warnings as errors. The Java test adapter compiles
-against those actual Kotlin classes. `--jar /absolute/path/specqr-kotlin.jar` tests
-the exact thin artifact instead. Both routes use only Kotlin standard library
-as the external runtime dependency. Every subprocess has a timeout; JVM processing is limited to two active
-processors. The tracked baseline source/package files must match the pinned HEAD
-before and after execution. Kotlin source, tests, and helper tools are hashed before
-and after execution, and a concurrent change fails the audit. A test-only JVM
-property corrupts catalog output after actual Kotlin GS1 execution; the same comparator
-must detect that negative control as a value mismatch. No reference implementation
-or fault-injection branch is copied into the runtime.
+baseline は、変更していない SpecQR JavaScript の `15ad15e5c770ea0e39072f8f88b2733018f02ffd` のチェックアウトである必要があります。`--java`、`--javac`、`--node` または `JAVA`、`JAVAC`、`NODE` で使用するツールを指定できます。`--report` で JSON レポートの保存先を選択します（既定は `build/gs1-conformance.json`）。Kotlin ソースは一時保存先へ別途コンパイルし、JVM 17 bytecode、language/API 2.2 を指定して警告をエラーとして扱います。Java テスト adapter はその実際の Kotlin クラスに対してコンパイルします。`--jar /absolute/path/specqr-kotlin.jar` を指定すると、代わりに指定した thin artifact 自体を検査します。どちらの経路も、外部の runtime 依存関係は Kotlin 標準ライブラリだけです。すべての子プロセスにタイムアウトを設定し、JVM 処理は有効な processor 2 個に制限します。追跡対象の baseline source/package files は、実行の前後で固定した HEAD と一致する必要があります。Kotlin ソース、テスト、補助ツールは実行前後にハッシュを計算し、実行中に変更されると監査は失敗します。テスト専用の JVM property により、実際の Kotlin GS1 実行後に catalog 出力を改変します。同じ comparator が、この negative control を値の不一致として検出する必要があります。参照実装や fault-injection branch を runtime にコピーすることはありません。
 
-The deterministic corpus covers all 50 AI metadata entries; valid and invalid
-values for every AI; every ASCII code in hosts, credentials, stems, paths, query
-values and creator values; IPv4 numeric forms; IPv6; ports; special-scheme URL
-syntax; percent escapes; all UTF-8 byte values and continuation boundaries;
-seeded malformed URL/byte-string samples; IDNA deviations; and literal/encoded
-dot-only GS1 values. Each URI exercises parsing, validation, and normalization.
+決定的な corpus は、全 50 AI metadata entries、各 AI の有効・無効な値、host・credentials・stem・path・query 値・creator 値における全 ASCII code、IPv4 の数値形式、IPv6、port、special-scheme URL 構文、percent escapes、全 UTF-8 byte 値と継続境界、seed を指定した不正な URL/byte-string samples、IDNA deviations、literal または encoded の dot-only GS1 値を対象とします。各 URI について parse、validate、normalize を検査します。
 
-The report retains the exact requests and results, corpus hash, Java and Node
-versions, baseline commit, and three distinct difference counts:
+レポートは厳密な request と結果、corpus hash、Java と Node の版、baseline commit、および次の 3 種類の差分件数を保持します。
 
-- Acceptance: one implementation accepts and the other rejects
-- Value: both succeed but logical elements, unknown query values/order, AI
-  metadata, or normalized/created URI differ
-- Diagnostic: acceptance agrees but stable error/warning fields differ. Compared
-  fields are `code`, `reason`, `ai`, `value`, `key`, `offset`, `elementIndex`,
-  `expected`, and `count`, with missing and null normalized. Human-facing `message`
-  prose is intentionally not compared
+- Acceptance: 一方の実装が受理し、もう一方が拒否する。
+- Value: 両方が成功するが、論理要素、未知 query の値・順序、AI metadata、正規化・作成された URI のいずれかが異なる。
+- Diagnostic: 受理・拒否は一致するが、安定した error/warning fields が異なる。比較する field は `code`、`reason`、`ai`、`value`、`key`、`offset`、`elementIndex`、`expected`、`count` であり、欠落と null は正規化する。人間向けの `message` の文章は意図的に比較しない。
 
-Ordinary and catalog differences cause a failing exit code. Two separate,
-explicitly reported categories are expected:
+通常のケースまたは catalog で差分が生じると、失敗を示す終了コードになります。次の 2 分類は想定する差分として分けて明示します。
 
-1. Java's `java.net.IDN` is IDNA2003, whereas browser URLs use UTS #46. For example,
-   `faß.de` becomes `fass.de` in Java; final sigma is folded; some joiners are
-   removed; newer Unicode characters can be rejected. ASCII ACE (`xn--`) labels
-   must round-trip through `IDN.toUnicode(..., ALLOW_UNASSIGNED)`; malformed ACE is
-   rejected, but valid IDNA2008 deviation labels such as `xn--fa-hia.de` are also
-   rejected. Newer valid ACE scalars such as emoji can pass with this flag even
-   when their raw Unicode host form is rejected. Ordinary ASCII non-ACE hosts
-   avoid this IDNA boundary. The adapter does not use `java.net.URI`'s stricter raw-character
-   grammar and never resolves a host or accesses the network.
-2. Dot-only GS1 values are deliberately lossless. The Kotlin parser retains literal
-   or percent-encoded `.` / `..` values, and creation/normalization puts them in
-   the query. The JS baseline's browser URL normalization can drop them or reject
-   the resulting path. The report counts both acceptance and value differences.
+1. Java の `java.net.IDN` は IDNA2003 ですが、ブラウザ URL は UTS #46 を使用します。たとえば、Java では `faß.de` が `fass.de` になり、final sigma が畳み込まれ、一部の joiners が削除されます。新しい Unicode 文字は拒否される場合があります。ASCII ACE（`xn--`）labels は `IDN.toUnicode(..., ALLOW_UNASSIGNED)` による round-trip が必要です。不正な ACE だけでなく、`xn--fa-hia.de` のような有効な IDNA2008 deviation labels も拒否します。emoji などの新しい有効な ACE scalars は、この flag により raw Unicode host 形式が拒否される場合でも通ることがあります。通常の ASCII non-ACE hosts は、この IDNA 境界を回避します。adapter は `java.net.URI` のより厳格な raw-character grammar を使用せず、host の名前解決もネットワークアクセスも行いません。
+2. dot-only GS1 値は、意図的に値を失わず扱います。Kotlin parser は literal または percent-encoded の `.` / `..` 値を保持し、作成・正規化時には query に置きます。JS baseline のブラウザ URL 正規化では、これらを削除したり、結果の path を拒否したりする場合があります。レポートは受理・拒否の差分と値の差分の両方を数えます。
 
-This corpus demonstrates tested behavior; it is not a claim of complete WHATWG
-URL or GS1 conformance.
+この corpus は検査した挙動を示すものであり、WHATWG URL または GS1 への完全準拠を主張するものではありません。
 
 ## Exact reference-runtime profiles
 
-The pinned JavaScript source uses the host Node runtime's WHATWG URL parser.
-Source pinning alone does not pin that parser's semantics. The audited, exact
-reference profiles are Node **24.19.0 / Ada 3.4.4** and Node **24.21.0 / Ada 4.0.0**,
-both with ICU 78.3 and Unicode 17.0. Other versions or dependency tuples fail
-closed until their outcomes are reviewed. The selected profile is always recorded.
+固定した JavaScript ソースは、host Node runtime の WHATWG URL parser を使用します。ソースを固定するだけでは、その parser の意味まで固定されません。監査した厳密な参照 profile は Node **24.19.0 / Ada 3.4.4** と Node **24.21.0 / Ada 4.0.0** であり、どちらも ICU 78.3 と Unicode 17.0 を使用します。ほかの版や依存関係の組合せは、結果をレビューするまで fail-closed で拒否します。選択した profile は必ず記録します。
 
-Use each installed official Node binary explicitly (the compiler/JDK setup above
-still applies):
+インストール済みの公式 Node バイナリをそれぞれ明示して使います。前述の compiler/JDK 設定も必要です。
 
 ```sh
 python3 tools/gs1-conformance/verify_gs1.py --baseline /path/to/SpecQR --node /path/to/node-24.19.0 --node-profile 24.19.0 --report artifacts/gs1-node24.19.json
 python3 tools/gs1-conformance/verify_gs1.py --baseline /path/to/SpecQR --node /path/to/node-24.21.0 --node-profile 24.21.0 --report artifacts/gs1-node24.21.json
 ```
 
-The full corpus is unchanged: **5,610 cases and 15,690 operations**, with corpus
-SHA-256 `61827bb17127b1c931f05d436b72984818636150e8d0a9c1cdf5cec678b99df6`.
-`known-url-outcomes.json` fixes all normalized outcomes for the 30 IDNA and 24
-dot-only cases: one invariant Kotlin result set and two explicit JavaScript
-result sets. `known_url_profiles.py` checks exact requests, order, response counts,
-acceptance, normalized URI values and normalized diagnostics. Category membership
-or an unchanged aggregate count cannot excuse another outcome. Ordinary and
-catalog cases still require zero differential failures.
+corpus 全体は変更していません。**5,610 cases、15,690 operations** で、corpus SHA-256 は `61827bb17127b1c931f05d436b72984818636150e8d0a9c1cdf5cec678b99df6` です。`known-url-outcomes.json` は 30 IDNA cases と 24 dot-only cases の全正規化結果を固定しており、不変の Kotlin 結果集合 1 つと、明示した JavaScript 結果集合 2 つを保持します。`known_url_profiles.py` は厳密な request、順序、応答件数、受理・拒否、正規化した URI 値と診断を検査します。同じ分類に属することや、集計件数が変わらないことを理由に、別の結果を許容しません。通常のケースと catalog のケースは、引き続き差分による失敗がゼロである必要があります。
 
-- Node 24.19.0: **64 documented operation differences**, consisting of 24 IDNA
-  (21 acceptance, 3 value) and 40 dot-only (12 acceptance, 28 value).
-- Node 24.21.0: **91 documented operation differences**, consisting of 51 IDNA
-  (48 acceptance, 3 value) and the same 40 dot-only differences.
-- Both profiles require **zero diagnostic differences**.
+- Node 24.19.0: **文書化した operation 差分は 64 件**です。内訳は IDNA 24 件（acceptance 21 件、value 3 件）と dot-only 40 件（acceptance 12 件、value 28 件）です。
+- Node 24.21.0: **文書化した operation 差分は 91 件**です。内訳は IDNA 51 件（acceptance 48 件、value 3 件）と、同じ dot-only 差分 40 件です。
+- どちらの profile も **diagnostic 差分がゼロ**である必要があります。
 
-The extra 27 operations are exactly parse, normalize and validate for these nine
-ASCII ACE hosts: `xn--a`, `xn--`, `xn--abc`, `xn--abc-`, `xn--a-ecp.ru`, `xn--0.pt`,
-`xn--a.test`, `xn--a_.test`, and `xn--%61.test` (normalized to `xn--a.test`). The
-Kotlin adapter rejects these in both profiles under its documented ACE validation
-policy. The newer Node/Ada parser accepts them under the WHATWG non-strict ASCII
-domain rule. This is an intentional reference-standard change, not a claim of a
-Node defect or a reason to change the bounded Kotlin policy.
+追加の 27 operations は、次の 9 ASCII ACE hosts に対する parse、normalize、validate だけです。`xn--a`、`xn--`、`xn--abc`、`xn--abc-`、`xn--a-ecp.ru`、`xn--0.pt`、`xn--a.test`、`xn--a_.test`、`xn--%61.test`（`xn--a.test` に正規化）を対象とします。Kotlin adapter は、文書化した ACE 検証方針に基づき、両方の profile でこれらを拒否します。新しい Node/Ada parser は WHATWG の非 strict ASCII domain 規則に基づいて受理します。これは意図した参照規格の変更であり、Node の不具合を主張するものでも、範囲を限定した Kotlin の方針を変更する理由でもありません。
 
-Primary references: [WHATWG URL IDNA/domain parser](https://url.spec.whatwg.org/#concept-domain-to-ascii)
-and [Ada 4's documented ASCII ACE behavior](https://github.com/ada-url/ada/blob/v4.0.0/src/url_pattern_helpers.cpp#L323-L327).
-The fixture records official Node binary-archive checksums and published source-
-archive checksums. Each run separately fingerprints the actual executing Node
-binary and records all its dependency versions, its path/platform/architecture,
-the JDK identity, Kotlin class/JAR and standard-library hashes, every reference JS
-source file, the fixture, and the audit tools. Sources and executable identities
-must remain unchanged during execution. A published source-archive checksum is
-provenance metadata, not a claim that the archive was built or executed by this audit.
+一次資料は [WHATWG URL IDNA/domain parser](https://url.spec.whatwg.org/#concept-domain-to-ascii) と [Ada 4's documented ASCII ACE behavior](https://github.com/ada-url/ada/blob/v4.0.0/src/url_pattern_helpers.cpp#L323-L327) です。fixture は、公式 Node バイナリアーカイブのチェックサムと、公開ソースアーカイブのチェックサムを記録します。各実行では、実際に実行する Node バイナリの fingerprint を別途取得し、全依存関係の版、その path/platform/architecture、JDK の識別情報、Kotlin class/JAR と標準ライブラリの hashes、全参照 JS ソースファイル、fixture、監査ツールを記録します。ソースと実行ファイルの識別情報は、実行中に変わらない必要があります。公開ソースアーカイブのチェックサムは出典の metadata であり、この監査でそのアーカイブをビルド・実行したという主張ではありません。
 
-The catalog corruption control still invokes the actual JVM. Three additional
-controls mutate copies of actual process results: making Kotlin accept a rejected
-ACE host, changing an IDNA reference URI while preserving aggregate difference
-counts, and changing a Kotlin IDNA URI while preserving those same counts. The
-exact-outcome guard must reject all three. No profile is selected from candidate
-results, and fixtures are never updated automatically on failure.
+catalog 改変 control も、引き続き実際の JVM を呼び出します。追加の 3 controls は実際のプロセス結果のコピーを改変し、拒否される ACE host を Kotlin が受理したことにする、差分の集計件数を保ったまま IDNA の参照 URI を変更する、同じ集計件数を保ったまま Kotlin IDNA URI を変更する、という操作を行います。厳密な結果を検査する guard は、この 3 つすべてを拒否する必要があります。候補の結果から profile を選択することはなく、失敗時に fixture を自動更新することもありません。

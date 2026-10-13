@@ -1,6 +1,6 @@
 # Contributing
 
-Contributions are welcome. Runtime code must remain Kotlin with no dependency beyond Kotlin stdlib and `java.base`.
+貢献を歓迎します。runtime code は Kotlin を維持し、Kotlin stdlib と `java.base` 以外に依存してはいけません。
 
 変更前後に `KOTLIN_HOME` を指定して `java tools/Build.java test` と `java tools/VerifyPackage.java` を実行してください。独立検証は `tools/conformance/README.md`、GS1 は `tools/gs1-conformance/README.md` に記載しています。
 
