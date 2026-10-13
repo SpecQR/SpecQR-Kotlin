@@ -1,6 +1,6 @@
 # Verification
 
-Verification executes the Kotlin implementation itself. Independent encoders and decoders are development-only tools in separate processes, not dependencies of the shipped library.
+検証では Kotlin 実装そのものを実行します。独立したエンコーダーとデコーダーは、別プロセスで動作する開発専用ツールであり、配布ライブラリの依存関係ではありません。
 
 ## ローカル最終結果 (2026-10-03 UTC)
 
@@ -24,7 +24,7 @@ Verification executes the Kotlin implementation itself. Independent encoders and
 - 独立 Nayuki 1.8.0: 2,400 matrices。固定 version/mask、明示 segment 境界で比較
 - 内部配置 4,320 件、全 mask penalty、GF(256) 全 65,536 積、RS degree 1–255
 - 640 容量、1,920 境界 plan、Unicode/任意バイト fuzz、18 malformed cases
-- SA 22 sets / 112 symbols の data/ECC/matrix、8-thread 256 replay
+- SA 22 sets / 112 symbols の data/ECC/matrix、8 thread の 256 replay
 - matrix/data/ECC corruption、process fault、response fault、untyped error の 9 negative controls
 - GS1 15,690 operations: AI catalog、正常/異常値、URL、validation structure、typed-error negative control
 

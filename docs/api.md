@@ -1,6 +1,6 @@
 # Kotlin API
 
-The public Kotlin/JVM API is in `io.specqr`. Kotlin properties and default/named arguments are supported; Java callers get static factories, overloads, compatible accessor methods, and an options builder.
+公開 Kotlin/JVM API は `io.specqr` にあります。Kotlin の properties と既定引数・名前付き引数に対応します。Java の呼出し側には static factories、overloads、互換 accessor methods、options builder を提供します。
 
 ## 生成と計画
 
@@ -68,7 +68,7 @@ val qr = SpecQr.generateSegments(segments)
 
 property と同名 accessor: mode, text, assignment, applicationIndicator, index, total, parity, binary, logicalBytes, count, characterCount, byteCount, applicationIndicatorCodeword。`binary` / `binary()` と `logicalBytes` / `logicalBytes()` は毎回コピーを返します。`count` は QR count field に書く値（byte mode は byte 数、その他の data mode は scalar 数）、`characterCount` は元の Unicode scalar 数（binary/control は 0）、`byteCount` は byte 診断（Kanji は scalar 数 × 2）です。`applicationIndicatorCodeword` は FNC1 second の符号値、それ以外は null。`isControl()` は制御 segment の判定、`dataBitLength()` / `totalBits(version)` / `bits(version)` は符号化量と bit 列です。公開 helper `fromText(mode, text)` は numeric/alphanumeric/byte/kanji のみを受け付けます。
 
-テキストは孤立 surrogate を拒否し、正しい補助平面 pair は 1 scalar とします。Kanji の論理 byte/parity は元テキスト UTF-8、QR payload は 13-bit 値。JDK の charset provider に依存しません。ECI は解釈ラベルで、データ変換を実行しません。ECI option 使用時には auto Kanji 選択を抑えますが、明示 Kanji segment は使えます。
+テキストは孤立 surrogate を拒否し、正しい補助平面 pair は 1 scalar とします。Kanji の論理 byte/parity は元テキスト UTF-8、QR payload は 13 bit 値。JDK の charset provider に依存しません。ECI は解釈ラベルで、データ変換を実行しません。ECI option 使用時には auto Kanji 選択を抑えますが、明示 Kanji segment は使えます。
 
 `Segments.create`、`normalize`、`bitLength`、`bits` は低水準 API。manual 境界は自動結合しません。FNC1 / FNC1 second / SA は先頭一意。FNC1 下の手動 alphanumeric `%` は区切り、`%%` は literal percent です。高水準 GS1 は literal percent を守るため auto を byte にし、強制 alphanumeric を拒否します。
 

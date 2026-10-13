@@ -1,6 +1,6 @@
 # Security
 
-SpecQR generates QR symbols; it does not authenticate their payloads or make scanned URLs trustworthy.
+SpecQR は QR symbols を生成します。payload の認証や、読み取った URL の信頼性の保証は行いません。
 
 QR の内容や Structured Append parity を認証に使わないでください。外部入力には実装上限とは別にアプリケーション側の長さ・用途制限を設けてください。SVG の色は XML escaping を行い、PNG の geometry と出力サイズを事前に制限します。Digital Link は範囲限定 GS1 adapter で、汎用 URL firewall ではありません。
 

@@ -103,7 +103,7 @@ Windows は classpath 区切りに `;` を使います。`--help` に全オプ�
 
 ## 実装範囲
 
-- Model 2 Version 1–40、4 ECC、固定/自動 version、固定/自動 mask、同一 version 内の ECC boosting
+- QR Code Model 2 Version 1–40、4 ECC、固定/自動 version、固定/自動 mask、同一 version 内の ECC boosting
 - numeric / alphanumeric / UTF-8 byte / raw binary / Kanji、自動 mixed 最適化と手動境界
 - ECI、FNC1 first/second。制御の組合せは SpecQR 契約による制限あり
 - plan/estimate/capacity、codeword と mask/scan/print 診断

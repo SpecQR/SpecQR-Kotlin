@@ -1,10 +1,10 @@
 # Structured Append
 
-This Kotlin/JVM edition provides Kotlin properties and Java-compatible accessors. The Java snippets below deliberately demonstrate the interop API; the same implementation is executed from Kotlin.
+この Kotlin/JVM 版は Kotlin properties と Java 互換 accessors を提供します。以下の Java コード例は、相互運用 API を示すために意図的に Java で記述しています。Kotlin からも同じ実装を実行します。
 
 Kotlin では `Options(version = 2)` のような名前付き引数と `options.copy(...)` を利用できます。以下の Java 構文例は相互運用 API の例です。
 
-`StructuredAppend` splits text, bytes, or manual segments into a deterministic set of 2–16 QR symbols and validates decoded parts before joining them.
+`StructuredAppend` は、text、bytes、手動 segments を決定的な 2–16 QR symbols の集合へ分割し、復号済みパートを検証してから結合します。
 
 Structured Append は、複数の QR symbol に sequence / total / parity の header を付ける機能です。SpecQR-Kotlin は自動分割、低水準 header、parity 計算、復号済みパートの結合を提供します。**QR を画像から読み取る decoder は含みません。** 読み取りライブラリが Structured Append metadata を公開するかは別途確認してください。
 
@@ -53,7 +53,7 @@ System.out.println("Symbols: " + set.total() + ", parity: " + set.parity());
 ## 選択・分割の規則
 
 1. 固定 Version、または minVersion から maxVersion を小さい順に調べる
-2. 各候補で 20-bit Structured Append header を含め、最大 maxSymbols 個に収まるか確認する
+2. 各候補で 20 bit Structured Append header を含め、最大 maxSymbols 個に収まるか確認する
 3. 先頭から、残りが空にならない範囲で最大の fitting prefix を切り出す
 4. 2 個以上の完全な分割が得られる最小 Version を選ぶ
 
@@ -97,12 +97,12 @@ int byteParity = StructuredAppend.calculateParity(new byte[] {1, 2, 3});
 int manualParity = StructuredAppend.calculateSegmentsParity(segments);
 ```
 
-parity は元データの各 byte を XOR した 8-bit 値です。
+parity は元データの各 byte を XOR した 8 bit 値です。
 
 - text: UTF-8
 - binary: raw bytes
 - manual: 各 segment の logical bytes を連結したもの
-- manual Kanji: **元 text の UTF-8**。Kanji 用 Shift_JIS の 2-byte 値を使う契約ではない
+- manual Kanji: **元 text の UTF-8**。Kanji 用 Shift_JIS の 2 byte 値を使う契約ではない
 - control: 高水準 parity 対象の manual 入力にはそもそも認めない
 
 parity は順序を完全には検出せず、容易に衝突します。認証・署名・暗号化・強い integrity check ではありません。信頼境界を越えるデータには、上位プロトコルで MAC / 署名等を扱ってください。
@@ -121,7 +121,7 @@ QrCode second = SpecQr.generateSegments(List.of(
 
 または `Options.builder().structuredAppend(Segment.structuredAppend(...)).build()` で 1 個の symbol に付加できます。すでに手動 header がある場合は Options でも重ねて付けないでください。
 
-公開 index は **1-based**、total は 2–16、parity は 0–255。bitstream では index − 1 と total − 1 を各 4 bits、parity を 8 bits として 4-bit mode indicator の後に入れます。合計 20 bits です。
+公開 index は **1-based**、total は 2–16、parity は 0–255。bitstream では index − 1 と total − 1 を各 4 bits、parity を 8 bits として 4 bit mode indicator の後に入れます。合計 20 bits です。
 
 低水準生成は、他の symbol の存在、総データの parity、欠番、重複、一式の Version / ECC の統一を検証しません。利用側がセット全体を管理します。header は先頭かつ一意で、ECI / FNC1 first / second と併用できません。
 
